@@ -25,7 +25,7 @@ model User {
 model Post {
   id        Int       @id @default(autoincrement())
   title     String
-  content   String
+  content   String    @db.Text
   category  String
   likes     Int       @default(0)
   createdAt DateTime  @default(now())
@@ -38,7 +38,7 @@ model Post {
 
 model Comment {
   id        Int      @id @default(autoincrement())
-  content   String
+  content   String   @db.Text
   createdAt DateTime @default(now())
   post      Post     @relation(fields: [postId], references: [id])
   postId    Int
